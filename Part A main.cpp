@@ -5,6 +5,7 @@
 #define SERVICE_UUID        "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 
+//define led pin
 #define LED_PIN 2
  
 class MyCallbacks: public BLECharacteristicCallbacks {
@@ -16,18 +17,19 @@ class MyCallbacks: public BLECharacteristicCallbacks {
       Serial.print("Received: ");
       Serial.println(value.c_str());
 
-      // Convert to lowercase for safety
+      // convert to lowercase
       String command = String(value.c_str());
       command.toLowerCase();
 
+      //controls the led based on the command
       if (command == "on") {
-        digitalWrite(LED_PIN, HIGH);
+        digitalWrite(LED_PIN, HIGH); //turn on led
         Serial.println("LED ON");
       } else if (command == "off") {
-        digitalWrite(LED_PIN, LOW);
+        digitalWrite(LED_PIN, LOW); //turn off led
         Serial.println("LED OFF");
       } else {
-        Serial.println("unknown command");
+        Serial.println("unknown command"); //handle unknown strings
       }
 
       Serial.println("*********");
@@ -38,7 +40,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
 void setup() {
  Serial.begin(115200);
  pinMode(LED_PIN, OUTPUT);
- digitalWrite(LED_PIN, LOW);  
+ digitalWrite(LED_PIN, LOW); //start led off 
 
  
  Serial.println("1- Download and install an BLE scanner app in your phone");
@@ -60,7 +62,7 @@ void setup() {
  
  pCharacteristic->setCallbacks(new MyCallbacks());
  
- pCharacteristic->setValue("Send 'on' or 'off' ");
+ pCharacteristic->setValue("Send 'on' or 'off' "); //send this to user what to write
  pService->start();
  
  BLEAdvertising *pAdvertising = pServer->getAdvertising();
