@@ -1,6 +1,6 @@
-# LAB4-CS596
+# TTGO Bluetooth Step Counter
 
-Participants: Bryan Marquez Aguilar and Brian Guzman
+Participants: Bryan Marquez Aguilar
 
 Lab 4 Part A Video:
 
