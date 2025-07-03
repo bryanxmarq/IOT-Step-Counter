@@ -1,4 +1,4 @@
-# TTGO Bluetooth Step Counter
+# Bluetooth Step Counter
 
 Participants: Bryan Marquez Aguilar
 
